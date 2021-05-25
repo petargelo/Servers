@@ -3,6 +3,7 @@
     <div class="list-group">
       <br><br>
       <a
+      [routerLink]="['/users', user.id, user.name]"
         href="#"
         class="list-group-item"
         *ngFor="let user of users">
@@ -12,8 +13,10 @@
   </div>
   <div class="col-xs-12 col-sm-4">
     <br><br>
-    <app-user></app-user>
-  </div>
+    <router-outlet>USER</router-outlet>
+<!--     <app-user></app-user>
+ --> 
+ </div>
 </div>
 
 

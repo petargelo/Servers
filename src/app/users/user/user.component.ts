@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   user: {id: number, name: string};
+  
 
   constructor(private route: ActivatedRoute) { }
 
@@ -16,6 +17,17 @@ export class UserComponent implements OnInit {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name']
     };
+
+   this.route.params.subscribe(
+    (params: Params) => {       //ES6 arrow funkcija s anonimnom funkcijom koja prima params svaki put kad se izmijeni i mijenja users objekt. 
+                                //Subscribe omogućava da se funkcija izvršava samo kod promjena, tj. klika na nekog usera.
+    this.user.id = params ['id'];
+    this.user.name= params ['name'];
+    })
+  }
+
+  ngOnDestroy(){
+
   }
 
 }

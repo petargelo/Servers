@@ -3,6 +3,9 @@
     <br><br>
     <div class="list-group">
       <a
+        [routerLink]="['/servers', server.id]"
+        [queryParams]="{allowEdit: '1'}"
+        fragment="loading"
         href="#"
         class="list-group-item"
         *ngFor="let server of servers">
@@ -12,8 +15,9 @@
   </div>
   <div class="col-xs-12 col-sm-4">
     <br>
-    <button class="btn-primary" (click)=onReload()>Reload Page</button>
-    <br><br>
+    
+  <button class="btn-primary" (click)=onReload()>Reload Page</button>
+  <hr>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label for="input-group-text">Input polje za test</label>
@@ -23,7 +27,8 @@
 
     <app-edit-server></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <router-outlet></router-outlet>
+     <!--  <app-server></app-server> -->
   </div>
 </div>
 
