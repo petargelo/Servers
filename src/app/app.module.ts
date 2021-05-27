@@ -12,6 +12,9 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 /* import { RouterModule, Routes } from '@angular/router';
  */
 
@@ -41,7 +44,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule /* u njemu se nalaze podaci za routing */
 /*     RouterModule.forRoot(appRoutes) 
  */  ],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
